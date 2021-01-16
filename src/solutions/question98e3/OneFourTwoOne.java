@@ -8,6 +8,10 @@ public class OneFourTwoOne {
   }
 
   public static void main(String[] args) {
+
+    // Enforce number of arguments
+    assert args.length == 1 : "only 1 argument allowed, but " + args.length + " were given";
+
     int value = Integer.parseInt(args[0]);
 
     System.out.print(value);
