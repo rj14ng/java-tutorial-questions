@@ -1,6 +1,6 @@
 package solutions.questione6fd;
 
-public class BitSetArray implements BitSet {
+public class BitSetArray extends BitSet {
 
   private final int maxValue;
   private final long[] bitSet;
@@ -43,34 +43,13 @@ public class BitSetArray implements BitSet {
         bitSet[i] &= ((BitSetArray) s).bitSet[i];
       }
     } else {
-      for (int x = 0; inRange(x); x++) {
-        if (!s.contains(x)) {
-          remove(x);
-        }
-      }
+      super.intersectWith(s);
     }
   }
 
   @Override
   public int maxStorableValue() {
     return maxValue;
-  }
-
-  @Override
-  public String toString() {
-    final StringBuilder sb = new StringBuilder("{");
-    boolean first = true;
-    for (int x = 0; inRange(x); x++) {
-      if (contains(x)) {
-        if (first) {
-          first = false;
-        } else {
-          sb.append(", ");
-        }
-        sb.append(x);
-      }
-    }
-    return sb.toString() + "}";
   }
 
   private int index(int x) {
@@ -81,11 +60,7 @@ public class BitSetArray implements BitSet {
     return x % Long.SIZE;
   }
 
-  private boolean inRange(int x) {
-    return x >= 0 && x < maxStorableValue();
-  }
-
-  // Show bits in bitset, for debugging purposes
+  // Show bits in bit set, for debugging purposes
   private String showSet() {
     final StringBuilder sb = new StringBuilder();
     for (long i : bitSet) {

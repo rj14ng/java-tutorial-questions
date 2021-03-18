@@ -1,6 +1,6 @@
 package solutions.questione6fd;
 
-public class BitSet8 implements BitSet {
+public class BitSet8 extends BitSet {
 
   private byte bitSet;
 
@@ -36,37 +36,12 @@ public class BitSet8 implements BitSet {
     if (s instanceof BitSet8) {
       bitSet &= ((BitSet8) s).bitSet;
     } else {
-      for (int x = 0; inRange(x); x++) {
-        if (!s.contains(x)) {
-          remove(x);
-        }
-      }
+      super.intersectWith(s);
     }
   }
 
   @Override
   public int maxStorableValue() {
     return Byte.SIZE;
-  }
-
-  @Override
-  public String toString() {
-    final StringBuilder sb = new StringBuilder("{");
-    boolean first = true;
-    for (int x = 0; inRange(x); x++) {
-      if (contains(x)) {
-        if (first) {
-          first = false;
-        } else {
-          sb.append(", ");
-        }
-        sb.append(x);
-      }
-    }
-    return sb.toString() + "}";
-  }
-
-  private boolean inRange(int x) {
-    return x >= 0 && x < maxStorableValue();
   }
 }
