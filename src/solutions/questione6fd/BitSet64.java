@@ -1,10 +1,10 @@
 package solutions.questione6fd;
 
-public class BitSet8 implements BitSet {
+public class BitSet64 implements BitSet {
 
-  private byte bitSet;
+  private long bitSet;
 
-  public BitSet8() {
+  public BitSet64() {
     bitSet = 0;
   }
 
@@ -13,13 +13,13 @@ public class BitSet8 implements BitSet {
     if (!inRange(x)) {
       throw new RuntimeException("value " + x + " too large for bit set");
     }
-    bitSet |= (byte) 1 << (byte) x;
+    bitSet |= (long) 1 << (long) x;
   }
 
   @Override
   public void remove(int x) {
     if (inRange(x)) {
-      bitSet &= ~((byte) 1 << (byte) x);
+      bitSet &= ~((long) 1 << (long) x);
     }
   }
 
@@ -28,13 +28,13 @@ public class BitSet8 implements BitSet {
     if (!inRange(x)) {
       return false;
     }
-    return (((byte) 1 << (byte) x) & bitSet) != 0;
+    return (((long) 1 << (long) x) & bitSet) != 0;
   }
 
   @Override
   public void intersectWith(BitSet s) {
-    if (s instanceof BitSet8) {
-      bitSet &= ((BitSet8) s).bitSet;
+    if (s instanceof BitSet64) {
+      bitSet &= ((BitSet64) s).bitSet;
     } else {
       for (int x = 0; inRange(x); x++) {
         if (!s.contains(x)) {
@@ -46,7 +46,7 @@ public class BitSet8 implements BitSet {
 
   @Override
   public int maxStorableValue() {
-    return Byte.SIZE;
+    return Long.SIZE;
   }
 
   @Override

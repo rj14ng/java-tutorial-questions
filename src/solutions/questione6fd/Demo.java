@@ -5,7 +5,7 @@ public class Demo {
   public static void main(String[] args) {
 
     final BitSet small = new BitSet8();
-//    final BitSet medium = new BitSet64();
+    final BitSet medium = new BitSet64();
 //    final BitSet large = new BitSetArray(256);
 
 //    for (int i = 0; i < 254; i += 2) {
@@ -32,10 +32,14 @@ public class Demo {
 
     System.out.println("Small bit set is: " + small);
 
-//    medium.add(12);
-//    medium.add(15);
+    medium.add(12);
+    medium.add(15);
+    medium.add(63);
+    assert medium.contains(63);
+    medium.remove(63);
+    assert !medium.contains(63);
 
-//    System.out.println("Medium bit set is: " + medium);
+    System.out.println("Medium bit set is: " + medium);
 //    System.out.println("Large bit set is: " + large);
 //    large.intersectWith(small);
 //    System.out.println("Large after intersecting with small is: " + large);
