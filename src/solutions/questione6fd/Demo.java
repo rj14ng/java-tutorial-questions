@@ -6,11 +6,8 @@ public class Demo {
 
     final BitSet small = new BitSet8();
     final BitSet medium = new BitSet64();
-//    final BitSet large = new BitSetArray(256);
-
-//    for (int i = 0; i < 254; i += 2) {
-//      large.add(i + 2);
-//    }
+    final BitSet large = new BitSetArray(256);
+    final BitSet larger = new BitSetArray(512);
 
     small.add(3);
     small.add(4);
@@ -40,8 +37,35 @@ public class Demo {
     assert !medium.contains(63);
 
     System.out.println("Medium bit set is: " + medium);
-//    System.out.println("Large bit set is: " + large);
-//    large.intersectWith(small);
-//    System.out.println("Large after intersecting with small is: " + large);
+
+    for (int i = 0; i < 254; i += 2) {
+      large.add(i + 2);
+    }
+    assert large.contains(2);
+    assert large.contains(64);
+    large.remove(2); // remove from first long
+    large.remove(64); // remove from second long
+    assert !large.contains(2);
+    assert !large.contains(64);
+    System.out.println("Large bit set is: " + large);
+
+    large.intersectWith(small);
+    System.out.println("Large after intersecting with small is: " + large);
+
+    large.remove(4);
+    large.remove(6);
+    for (int i = 0; i < 256; i += 3) {
+      large.add(i);
+    }
+    for (int i = 0; i < 512; i += 2) {
+      larger.add(i);
+    }
+    System.out.println("Multiples of 3 up to 256: " + large);
+    System.out.println("Multiples of 2 up to 512: " + larger);
+    larger.intersectWith(large);
+    System.out.println("The two sets intersected together: " + larger);
+    assert !larger.contains(3);
+    assert larger.contains(6);
+    assert larger.contains(260);
   }
 }
