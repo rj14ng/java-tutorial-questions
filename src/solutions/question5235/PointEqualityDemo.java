@@ -9,7 +9,7 @@ public class PointEqualityDemo {
     System.out.println(
         "Points " + p1 + " and " + p2 + " are " + ((isEqual ? "" : "not ") + "equal"));
 
-    return p1.equals(p2);
+    return isEqual;
   }
 
   public static void main(String[] args) {
