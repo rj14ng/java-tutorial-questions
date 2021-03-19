@@ -35,6 +35,10 @@ public class AlarmClock extends Clock {
 
   @Override
   public String toString() {
-    return super.toString() + (alarmSounding ? " BEEP!" : "");
+    return super.toString() + (alarmSounding ? " " + beep() : "");
+  }
+
+  protected String beep() {
+    return "BEEP!";
   }
 }
