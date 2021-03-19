@@ -33,15 +33,6 @@ public class Point {
     return "(" + x + ", " + y + ", " + z + ")";
   }
 
-  public static void main(String[] args) {
-    Point origin = origin();
-    Point point = new Point(3, 4, 5);
-
-    System.out.println(origin);
-    System.out.println(point);
-    System.out.println(point.magnitude());
-  }
-
   @Override
   public boolean equals(Object other) {
     if (!(other instanceof Point)) {
