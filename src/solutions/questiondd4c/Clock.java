@@ -2,13 +2,13 @@ package solutions.questiondd4c;
 
 public class Clock {
 
-  private static final int SECS_IN_MIN = 60;
-  private static final int MINS_IN_HR = 60;
-  private static final int HRS_IN_DAY = 24;
-  private static final int SECS_IN_HR = SECS_IN_MIN * MINS_IN_HR;
-  private static final int SECS_IN_DAY = SECS_IN_HR * HRS_IN_DAY;
+  protected static final int SECS_IN_MIN = 60;
+  protected static final int MINS_IN_HR = 60;
+  protected static final int HRS_IN_DAY = 24;
+  protected static final int SECS_IN_HR = SECS_IN_MIN * MINS_IN_HR;
+  protected static final int SECS_IN_DAY = SECS_IN_HR * HRS_IN_DAY;
 
-  private int time; // represented by seconds since midnight
+  protected int time; // represented by seconds since midnight
   private final boolean displayInSeconds;
 
   private Clock(int secondsSinceMidnight, boolean displayInSeconds) {
@@ -20,8 +20,12 @@ public class Clock {
     this(secondsSinceMidnight, true);
   }
 
-  public Clock(int hour, int minute, int seconds) {
-    this(SECS_IN_HR * hour + SECS_IN_MIN * minute + seconds, false);
+  public Clock(int hh, int mm, int ss) {
+    this(hhmmssToSecsSinceMidnight(hh, mm, ss), false);
+  }
+
+  protected static int hhmmssToSecsSinceMidnight(int hh, int mm, int ss) {
+    return SECS_IN_HR * hh + SECS_IN_MIN * mm + ss;
   }
 
   public void tick() {
