@@ -17,9 +17,17 @@ public class GroupEmailAddress extends EmailAddress {
   }
 
   @Override
-  public Set<EmailAddress> getTargets() {
+  public Set<EmailAddress> getTargets(Set<EmailAddress> alreadySeen) {
+
     Set<EmailAddress> targets = new HashSet<>();
-    members.forEach(e -> targets.addAll(e.getTargets()));
+
+    if (alreadySeen.contains(this)) {
+      return targets;
+    }
+    alreadySeen.add(this);
+
+    members.forEach(e -> targets.addAll(e.getTargets(alreadySeen)));
+
     return targets;
   }
 }

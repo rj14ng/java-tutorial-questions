@@ -19,6 +19,11 @@ public class EmailAddressDemo {
     softwarePerformanceOptimizationGroup.addEmailAddress(
         new IndividualEmailAddress("nchong@doc.ic.ac.uk"));
 
+    softwarePerformanceOptimizationGroup.addEmailAddress(multicoreProgrammingGroup);
+
+    // Creates a cycle
+    multicoreProgrammingGroup.addEmailAddress(softwarePerformanceOptimizationGroup);
+
     IndividualEmailAddress wayne = new IndividualEmailAddress("wayne@doc.ic.ac.uk");
 
     GroupEmailAddress computerSystemsGroup = new GroupEmailAddress("cosys@doc.ic.ac.uk");

@@ -1,5 +1,6 @@
 package solutions.questiondc38;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,7 +12,11 @@ public abstract class EmailAddress {
     this.identifier = identifier;
   }
 
-  public abstract Set<EmailAddress> getTargets();
+  public final Set<EmailAddress> getTargets() {
+    return getTargets(new HashSet<>());
+  }
+
+  protected abstract Set<EmailAddress> getTargets(Set<EmailAddress> alreadySeen);
 
   @Override
   public String toString() {

@@ -10,7 +10,7 @@ public class IndividualEmailAddress extends EmailAddress {
   }
 
   @Override
-  public Set<EmailAddress> getTargets() {
+  public Set<EmailAddress> getTargets(Set<EmailAddress> alreadySeen) {
     Set<EmailAddress> targets = new HashSet<>();
     targets.add(this);
     return targets;
