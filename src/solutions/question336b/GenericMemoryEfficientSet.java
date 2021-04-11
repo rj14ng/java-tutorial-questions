@@ -21,8 +21,8 @@ public class GenericMemoryEfficientSet<E> implements GenericSet<E> {
   }
 
   @Override
-  public boolean contains(E item) {
-    return elements.contains(item);
+  public boolean remove(E item) {
+    return elements.remove(item);
   }
 
   @Override
@@ -31,8 +31,8 @@ public class GenericMemoryEfficientSet<E> implements GenericSet<E> {
   }
 
   @Override
-  public boolean remove(E item) {
-    return elements.remove(item);
+  public boolean contains(E item) {
+    return elements.contains(item);
   }
 
   @Override

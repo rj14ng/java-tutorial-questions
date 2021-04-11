@@ -1,33 +1,36 @@
 package solutions.questionb401;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericMemoryEfficientSet<E> implements GenericSet<E> {
 
-  private final Set<E> set;
+  private final List<E> elements;
 
   public GenericMemoryEfficientSet() {
-    this.set = new HashSet<>();
+    elements = new ArrayList<>();
   }
 
   @Override
-  public void add(E x) {
-    set.add(x);
+  public void add(E item) {
+    if (elements.contains(item)) {
+      return;
+    }
+    elements.add(item);
   }
 
   @Override
-  public boolean remove(E x) {
-    return set.remove(x);
+  public boolean remove(E item) {
+    return elements.remove(item);
   }
 
   @Override
   public boolean isEmpty() {
-    return set.isEmpty();
+    return elements.isEmpty();
   }
 
   @Override
-  public boolean contains(E x) {
-    return set.contains(x);
+  public boolean contains(E item) {
+    return elements.contains(item);
   }
 }
