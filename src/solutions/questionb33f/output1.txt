@@ -1,0 +1,2 @@
+ERROR: Line too long: a b c d e f g h i j k l m n o p q r s t u v w x y z now I know my abc next time won't you sing with me?
+ERROR: Line too long: I want to goto a warmer place and stop switch ing between tasks so often, all this switch ing makes it hard to finalize anything, and can't continue like this without at least a short break
